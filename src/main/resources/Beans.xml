@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Step 1: Root tag for Spring configuration -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <!-- Step 2: Define your beans here -->
+
+    <!-- bean definition-->
+    <bean id="petrol" class="org.example.PetrolEngine"></bean>
+    <!--Hinglish: Ye wali line me maine ye bata diya ki mai org.example.PetrolEngine is vali class
+     ko register kr raha hu , so kindly treat this as an spring bean, and mai is id ko petrol call me inject karunga-->
+
+    <bean id="diesel" class="org.example.DieselEngine"></bean>
+
+
+    <!-- Now ab muze ye batana hai ki abhi Car class me PetrolEngine ka object inject krna hai
+    ye sb spring framework karega, lekin spring framework ko bhi batana padega ki mere leye tu ye kr, muze nhi krunga ye manually-->
+
+
+    <!--muze abhi Car me petrolEngine inject krna hai, reference me petrolEngine ki id inject karo -->
+    <bean id="car" class="org.example.Car">
+        <property name="engine" ref="petrol"></property>
+    </bean>
+
+    <!-- Step 3: Inject dependency -->
+
+
+</beans>
