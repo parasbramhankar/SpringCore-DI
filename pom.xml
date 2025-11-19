@@ -10,13 +10,20 @@
   <name>SpringCore-DI</name>
   <url>http://maven.apache.org</url>
 
+
+<!-- Both compile and run using jdk 21 so use this in the <Properties> tag -->
   <properties>
-    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+  <maven.compiler.source>21</maven.compiler.source>
+  <maven.compiler.target>21</maven.compiler.target>
   </properties>
 
+
   <dependencies>
-
-      <!-- add the dependencies -->
-
+      <!-- https://mvnrepository.com/artifact/org.springframework/spring-context -->
+      <dependency>
+          <groupId>org.springframework</groupId>
+          <artifactId>spring-context</artifactId>
+          <version>6.2.12</version>
+      </dependency>
   </dependencies>
 </project>
