@@ -37,5 +37,4 @@
     <bean id="car" class="org.example.Car">
         <property name="engine" ref="petrol"></property>
     </bean>
-
 </beans>
