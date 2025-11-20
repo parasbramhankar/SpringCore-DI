@@ -4,7 +4,12 @@ public class Car {
 
     Engine engine;
 
+    public Car() {
+        System.out.println("Car constructor...");
+    }
+
     public void setEngine(Engine engine) {
+        System.out.println("Calling setter method");
         this.engine = engine;
     }
 
