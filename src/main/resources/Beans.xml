@@ -1,32 +1,43 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<!-- Step 1: Root tag for Spring configuration -->
+<!-- Root tag: Tells Spring that this file contains bean definitions -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="
            http://www.springframework.org/schema/beans
            http://www.springframework.org/schema/beans/spring-beans.xsd">
 
-    <!-- Step 2: Define your beans here -->
+    <!-- Step 1: Register all beans (classes) with Spring -->
 
-    <!-- bean definition-->
+    <!-- Register PetrolEngine as a Spring-managed bean -->
+    <!-- Spring will create an object of PetrolEngine with id 'petrol' -->
+    <!--1. This line tells Spring to create an object of PetrolEngine and manage it.
+        2. The bean's name (id) is petrol, so whenever I need a PetrolEngine object,
+           I will refer to this id.
+        3.Spring will create this object automatically. -->
     <bean id="petrol" class="org.example.PetrolEngine"></bean>
-    <!--Hinglish: Ye wali line me maine ye bata diya ki mai org.example.PetrolEngine is vali class
-     ko register kr raha hu , so kindly treat this as an spring bean, and mai is id ko petrol call me inject karunga-->
 
+
+
+    <!-- Register DieselEngine as a Spring-managed bean -->
     <bean id="diesel" class="org.example.DieselEngine"></bean>
 
 
-    <!-- Now ab muze ye batana hai ki abhi Car class me PetrolEngine ka object inject krna hai
-    ye sb spring framework karega, lekin spring framework ko bhi batana padega ki mere leye tu ye kr, muze nhi krunga ye manually-->
+    <!-- Step 2: Perform Dependency Injection -->
 
-
-    <!--muze abhi Car me petrolEngine inject krna hai, reference me petrolEngine ki id inject karo -->
+    <!-- Create a Car object and inject PetrolEngine into it -->
+    <!-- The 'engine' property of Car will receive the bean with id 'petrol' -->
+    <!-- This is Setter Injection (via setEngine() method) -->
+    <!-- The car bean tells Spring to create an object of the Car class.
+         Inside Car, there is a property named engine.
+         We want to inject PetrolEngine into that engine property.
+             ref="petrol" means:
+        “Use the bean whose id is petrol and inject it into Car.” -->
+     <!-- This is Setter Injection, because Spring uses the setEngine() method to inject the Engine.-->
     <bean id="car" class="org.example.Car">
         <property name="engine" ref="petrol"></property>
     </bean>
 
-    <!-- Step 3: Inject dependency -->
-
-
 </beans>
+
+
